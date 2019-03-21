@@ -11,15 +11,13 @@
 ```
 
 ### Version
----
 1.1
 
 ### Dependencies
----
-burp
-json
-time
-re
+burp</br>
+json</br>
+time</br>
+re</br>
 
 
 
