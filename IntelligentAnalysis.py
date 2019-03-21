@@ -56,7 +56,7 @@ class BurpExtender(IBurpExtender, IHttpListener, IMessageEditorTabFactory):
 
             return False
 
-        if ("longitude" in string and "latitude" in string) or ("lat" in string and "lon" in string):
+        if ("\"longitude\"" in string and "\"latitude\"" in string) or ("\"lat\"" in string and "\"lon\"" in string):
 
             locations = re.findall(r'\d{2,3}\.\d{3,6}', string)
 
