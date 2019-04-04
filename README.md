@@ -11,7 +11,7 @@
 ```
 
 ### Version
-1.1
+1.2
 
 ### Dependencies
 burp</br>
@@ -19,6 +19,8 @@ json</br>
 time</br>
 re</br>
 
+### 更新
+修复手机号误报
 
 ### 演示
 ![示例](./BHP.jpg)
