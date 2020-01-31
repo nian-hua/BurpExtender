@@ -11,16 +11,18 @@
 ```
 
 ### Version
-1.2
+1.3
 
 ### Dependencies
 burp</br>
-json</br>
-time</br>
 re</br>
 
 ### 更新
 修复手机号误报
+删除json格式化功能
+增加标记IP功能
+添加INFO标签
 
 ### 演示
 ![示例](./BHP.jpg)
+![示例](./BHP1.jpg)
