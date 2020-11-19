@@ -135,7 +135,7 @@ def stringIsPhone(string):
     return False
 
 def stringIsAssets(string):
-    assets = re.findall(r'\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b', string)
+    assets = re.findall(r'\b(?:(?:25[0-5]|2[0-4][0-9]|[1]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b', string)
     if assets != []:
         assetss = set(assets)
         assetsSet = set()
