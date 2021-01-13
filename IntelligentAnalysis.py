@@ -67,6 +67,9 @@ class BurpExtender(IBurpExtender, IProxyListener, IMessageEditorTabFactory):
         if stringIsAssets(msg):
             messageInfo.setHighlight('yellow')
 
+        if stringIsEmail(msg):
+            messageInfo.setHighlight('pink')
+
 
 
 class SstvInfoTab(IMessageEditorTab):
@@ -100,6 +103,7 @@ class SstvInfoTab(IMessageEditorTab):
             idcard = stringIsIdCard(content)
             gpslocal = stringIsGps(False,content)
             assets = stringIsAssets(content)
+            email = stringIsEmail(content)
             if phone != False:
                 pretty_msg += "Find phone:" + phone + '\n'
             if idcard != False:
@@ -108,6 +112,8 @@ class SstvInfoTab(IMessageEditorTab):
                 pretty_msg += "Find GpsLocal:" + gpslocal + '\n'
             if assets != False:
                 pretty_msg += "Find IP Address:" + assets + '\n'
+            if email != False:
+                pretty_msg += "Find Email Address:" + email + '\n'
             self._txtInput.setText(pretty_msg)
         return
 
@@ -144,11 +150,22 @@ def stringIsAssets(string):
         assetss = ','.join(assetsSet)
         return assetss
     return False
+	
+def stringIsEmail(string):
+    emails = re.findall(r'[\w!#$%&\'*+/=?^_`{|}~-]+(?:\.[\w!#$%&\'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?', string)
+    if emails != []:
+        emails = set(emails)
+        emailSet = set()
+        for i in emails:
+            emailSet.add(i)
+        emails = ','.join(emailSet)
+        return emails
+    return False
 
 def stringIsIdCard(string):
     coefficient = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
     parityBit = '10X98765432'
-    idcards = re.findall(r'([1-8][1-7]\d{4}[1|2]\d{3}[0|1]\d{1}[1-3]\d{4}[0-9|X|x])', string)
+    idcards = re.findall(r'([1-8][1-7]\d{4}[1|2]\d{3}[0|1]\d{1}[0-3]\d{4}[0-9|X|x])', string)
     idcardSet = set()
     if idcards != []:
         for idcard in idcards:
